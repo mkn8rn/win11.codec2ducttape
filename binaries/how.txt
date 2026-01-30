@@ -1,0 +1,131 @@
+## 1. Install MSYS2
+
+Download and install MSYS2 from:
+
+```
+https://www.msys2.org
+```
+
+Open **MSYS2 MSYS** shell.
+
+---
+
+## 2. Update MSYS2 base system
+
+```sh
+pacman -Syu
+```
+
+If prompted to restart, close the shell, reopen **MSYS2 MSYS**, then run again:
+
+```sh
+pacman -Syu
+```
+
+---
+
+## 3. Install MinGW-w64 toolchain and tools
+
+Still in **MSYS2 MSYS** shell:
+
+```sh
+pacman -S --needed mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake mingw-w64-x86_64-make git
+```
+
+When prompted for selection, press **Enter** (install all).
+
+---
+
+## 4. Open the correct shell
+
+Close all MSYS2 shells.
+
+Open **MSYS2 MinGW64** shell.
+
+Verify:
+
+```sh
+echo $MSYSTEM
+```
+
+Expected output:
+
+```
+MINGW64
+```
+
+---
+
+## 5. Clone Codec2 source
+
+```sh
+cd ~
+git clone https://github.com/drowe67/codec2.git
+cd codec2
+```
+
+---
+
+## 6. Configure build (MinGW)
+
+```sh
+mkdir build
+cd build
+cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON
+```
+
+---
+
+## 7. Build Codec2
+
+```sh
+mingw32-make -j
+```
+
+Build completes successfully.
+
+---
+
+## 8. Verify DLL and exports
+
+```sh
+ls src/libcodec2.dll
+objdump -p src/libcodec2.dll | grep codec2_
+```
+
+---
+
+## 9. Copy DLL to Windows Desktop
+
+Verify Windows user directory:
+
+```sh
+ls /c/Users
+```
+
+Then copy (replace `user` with your username):
+
+```sh
+cp src/libcodec2.dll /c/Users/user/Desktop/codec2.dll
+```
+
+---
+
+## 10. Copy required MinGW runtime DLLs
+
+```sh
+cp /mingw64/bin/libgcc_s_seh-1.dll /c/Users/user/Desktop/
+cp /mingw64/bin/libwinpthread-1.dll /c/Users/user/Desktop/
+```
+
+---
+
+## Final result on Windows Desktop
+
+```
+codec2.dll
+libgcc_s_seh-1.dll
+libwinpthread-1.dll
+```
+
+These three files together form a working Codec2 binary for Windows 11, ready for use.

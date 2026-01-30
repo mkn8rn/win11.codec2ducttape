@@ -1,0 +1,122 @@
+# ===========================================
+# Voice Changer Settings
+# ===========================================
+
+# Codec2 Settings
+# Modes: 3200, 2400, 1600, 1400, 1300, 1200, 700 bps
+# Lower = more robotic/vocoder effect
+# Requires codec2.dll in the application directory
+codec2_mode=700
+enable_codec2=false
+sample_rate=8000
+
+# Audio devices
+capture_device=default
+render_device=CABLE Input
+
+# ===========================================
+# LEVELS
+# ===========================================
+
+# Microphone Gain (input)
+# Amplifies or attenuates the input signal before processing
+# 1.0 = no change, 2.0 = double volume, 0.5 = half volume
+# Increase if your mic is too quiet, decrease if clipping
+mic_gain=1
+
+# Post-Processing Gain (output)
+# Amplifies or attenuates the final output signal
+# Applied after all effects and codec processing
+# 1.0 = no change, 2.0 = double volume, 0.5 = half volume
+post_gain=1
+
+# ===========================================
+# LATENCY
+# ===========================================
+
+# Audio buffer latency in milliseconds
+# Lower = less delay but may cause crackling/dropouts
+# Higher = more delay but smoother audio
+# Recommended: 20-100ms depending on your system
+# - 20-30ms: Low latency (fast system required)
+# - 50ms: Balanced (default, works for most systems)
+# - 100ms+: High latency (use if experiencing audio glitches)
+latency_ms=50
+
+# ===========================================
+# VOICE EFFECTS
+# ===========================================
+
+# Pitch Shifting
+# Shift voice pitch up or down by semitones
+# Positive = higher pitch, Negative = lower pitch
+# Range: -12 to +12 semitones (1 octave)
+enable_pitch_shift=false
+pitch_semitones=0
+
+# Formant Shifting
+# Changes voice character without affecting pitch
+# < 1.0 = deeper/larger vocal tract (masculine)
+# > 1.0 = higher/smaller vocal tract (feminine)
+# Range: 0.5 to 2.0
+enable_formant_shift=false
+formant_ratio=1.0
+
+# Robot Voice Effect
+# Modulates voice with a carrier frequency
+# Lower frequency = deeper robot, higher = more metallic
+enable_robot_voice=false
+robot_frequency_hz=100
+
+# Whisper Effect
+# Replaces voice with noise shaped by speech envelope
+enable_whisper=false
+
+# Distortion
+# Adds harmonic distortion/saturation
+# Drive: 0-100, Mix: 0-100
+enable_distortion=false
+distortion_drive=20
+distortion_mix=50
+
+# ===========================================
+# AUDIO PROCESSING
+# ===========================================
+
+# Band-pass Filter
+# Restricts audio to voice frequency range
+# Typical voice: 300-3400 Hz
+enable_bandpass=false
+bandpass_low_hz=300
+bandpass_high_hz=3400
+
+# Noise Gate
+# Silences audio below threshold to reduce background noise
+# Threshold in dB (negative values, -60 to 0)
+enable_noise_gate=false
+noise_gate_threshold_db=-40
+noise_gate_attack_ms=1
+noise_gate_release_ms=100
+
+# Compressor
+# Reduces dynamic range for more consistent volume
+# Threshold: level where compression starts (dB)
+# Ratio: compression strength (2:1 = gentle, 10:1 = heavy)
+# Makeup: gain added after compression (dB)
+enable_compressor=false
+compressor_threshold_db=-20
+compressor_ratio=4
+compressor_attack_ms=5
+compressor_release_ms=50
+compressor_makeup_db=0
+
+# ===========================================
+# SAFETY
+# ===========================================
+
+# Limiter
+# Prevents clipping by capping output level
+# Threshold: 0.0 to 1.0 (1.0 = no limiting)
+enable_limiter=false
+limiter_threshold=0.95
+
