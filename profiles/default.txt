@@ -7,7 +7,7 @@
 # Lower = more robotic/vocoder effect
 # Requires codec2.dll in the application directory
 codec2_mode=700
-enable_codec2=false
+enable_codec2=true
 sample_rate=8000
 
 # Audio devices
